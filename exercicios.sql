@@ -1,11 +1,15 @@
 -- atividade 01
+-- Objetivo: listar todos os clientes e a quantidade de pedidos de cada um.
+
 SELECT c.nome, COUNT(p.id_pedido) AS TOTAL 
 FROM cliente c
 LEFT JOIN pedido p 
 ON c.id_cliente = p.id_cliente
 GROUP BY c.nome;
 
--- atividade 02
+- atividade 02
+-- Objetivo: calcular o valor total das vendas de cada produto
+-- considerando apenas os pedidos com status FINALIZADO.
 
 SELECT pr.nome_produto, p.status, SUM(pi.quantidade * pi.preco_venda) AS TOTAL
 FROM produto pr
@@ -17,6 +21,8 @@ WHERE status= 'FINALIZADO'
 GROUP BY pr.nome_produto, p.status;
 
 -- atividade 03
+-- Objetivo: calcular o valor total das compras de cada cliente
+-- considerando apenas os pedidos com status FINALIZADO.
 
 SELECT c.nome, p.status, SUM(pi.quantidade * pi.preco_venda) AS TOTAL 
 FROM cliente c 
